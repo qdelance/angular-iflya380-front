@@ -7,16 +7,16 @@ export class Search {
                 public departureDate: string,
                 public returnDate: string,
                 public cabinClass: number,
-                public nbPassenger: number,
+                public numberPassengers: number,
                 public oneWay: boolean) {
     }
 }
 
 @Component({
     selector: 'search-form',
-    templateUrl: './app/search.component.html'
+    templateUrl: 'app/search-form.component.html'
 })
-export class SearchComponent {
+export class SearchFormComponent {
     cabinClasses = [
         {id: 1, name: 'Economy'},
         {id: 2, name: 'Premium'},
