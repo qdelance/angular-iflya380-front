@@ -17,15 +17,18 @@ export class Search {
 @Component({
     selector: 'search-form',
     templateUrl: 'app/search-form.component.html',
+    styleUrls: ['app/search-form.component.css'],
     providers: [AirportSearchService]
 })
 export class SearchFormComponent implements OnInit {
 
     departureAirports: Observable<Airport[]>;
     private departureAirportSearchTerms = new Subject<string>();
+    private displayDepartureDiv: boolean = false;
 
     arrivalAirports: Observable<Airport[]>;
     private arrivalAirportSearchTerms = new Subject<string>();
+    private displayArrivalDiv: boolean = false;
 
     cabinClasses = [
         {id: 1, name: 'Economy'},
@@ -41,13 +44,25 @@ export class SearchFormComponent implements OnInit {
 
     // Push a search term into the observable stream.
     departureSearch(term: string): void {
-        console.log(term);
+        this.displayDepartureDiv = true;
         this.departureAirportSearchTerms.next(term);
     }
 
     arrivalSearch(term: string): void {
-        console.log(term);
+        this.displayArrivalDiv = true;
         this.arrivalAirportSearchTerms.next(term);
+    }
+
+    selectDeparture(airport: Airport) {
+        console.log('Setting departure');
+        console.log(airport);
+        this.model.departure = airport.iata;
+    }
+
+    selectArrival(airport: Airport) {
+        console.log('Setting arrival');
+        console.log(airport);
+        this.model.arrival = airport.iata;
     }
 
     ngOnInit(): void {

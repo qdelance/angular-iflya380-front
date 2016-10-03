@@ -7,23 +7,21 @@
         <div class="form-group">
             <label for="departure">Departure</label>
             <input #departure type="text" class="form-control" id="departure" required
-                   [(ngModel)]="model.departure" name="departure" (keyup)="departureSearch(departure.value)">
-            <div>
+                   [(ngModel)]="model.departure" name="departure" (keyup)="departureSearch(departure.value)" (blur)="displayDepartureDiv = false">
+            <div *ngIf="displayDepartureDiv">
                 <div *ngFor="let airport of departureAirports | async"
-                     class="search-result">
-                    {{airport.iata}} - {{airport.name}}
-                </div>
+                     class="search-result"
+                     (click)="selectDeparture(airport)">{{airport.iata}} - {{airport.name}}</div>
             </div>
         </div>
         <div class=" form-group">
             <label for="arrival">Arrival</label>
             <input #arrival type="text" class="form-control" id="arrival" required
-                   [(ngModel)]="model.arrival" name="arrival" (keyup)="arrivalSearch(arrival.value)">
-            <div>
+                   [(ngModel)]="model.arrival" name="arrival" (keyup)="arrivalSearch(arrival.value)" (blur)="displayArrivalDiv = false">
+            <div *ngIf="displayArrivalDiv">
                 <div *ngFor="let airport of arrivalAirports | async"
-                     class="search-result">
-                    {{airport.iata}} - {{airport.name}}
-                </div>
+                     class="search-result"
+                     (click)="selectArrival(airport)">{{airport.iata}} - {{airport.name}}</div>
             </div>
         </div>
         <div class="form-group">
