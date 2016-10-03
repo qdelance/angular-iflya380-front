@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Airport, AirportSearchService } from "./airport-search.service";
 
+import { Observable }        from 'rxjs/Observable';
+import { Subject }           from 'rxjs/Subject';
 
 export class Search {
     constructor(public departure: string,
@@ -13,9 +16,17 @@ export class Search {
 
 @Component({
     selector: 'search-form',
-    templateUrl: 'app/search-form.component.html'
+    templateUrl: 'app/search-form.component.html',
+    providers: [AirportSearchService]
 })
-export class SearchFormComponent {
+export class SearchFormComponent implements OnInit {
+
+    departureAirports: Observable<Airport[]>;
+    private departureAirportSearchTerms = new Subject<string>();
+
+    arrivalAirports: Observable<Airport[]>;
+    private arrivalAirportSearchTerms = new Subject<string>();
+
     cabinClasses = [
         {id: 1, name: 'Economy'},
         {id: 2, name: 'Premium'},
@@ -23,7 +34,53 @@ export class SearchFormComponent {
         {id: 4, name: 'First'},
     ];
 
-    model:Search = new Search('CDG', 'JFK', '01/09/2016', null, 2, 3);
+    model: Search = new Search('CDG', 'JFK', '01/09/2016', null, 2, 3);
+
+    constructor(private airportSearchService: AirportSearchService) {
+    }
+
+    // Push a search term into the observable stream.
+    departureSearch(term: string): void {
+        console.log(term);
+        this.departureAirportSearchTerms.next(term);
+    }
+
+    arrivalSearch(term: string): void {
+        console.log(term);
+        this.arrivalAirportSearchTerms.next(term);
+    }
+
+    ngOnInit(): void {
+        this.departureAirports = this.departureAirportSearchTerms
+            .debounceTime(300)        // wait for 300ms pause in events
+            .distinctUntilChanged()   // ignore if next search term is same as previous
+            .switchMap(term => term   // switch to new observable each time
+                // return the airport search observable
+                ? this.airportSearchService.searchAirports(term)
+                // or the observable of empty airports if no search term
+                : Observable.of<Airport[]>([]))
+            .catch(error => {
+                // TODO: real error handling
+                console.log(error);
+                return Observable.of<Airport[]>([]);
+            });
+        this.departureAirports.subscribe();
+
+        this.arrivalAirports = this.arrivalAirportSearchTerms
+            .debounceTime(300)        // wait for 300ms pause in events
+            .distinctUntilChanged()   // ignore if next search term is same as previous
+            .switchMap(term => term   // switch to new observable each time
+                // return the airport search observable
+                ? this.airportSearchService.searchAirports(term)
+                // or the observable of empty airports if no search term
+                : Observable.of<Airport[]>([]))
+            .catch(error => {
+                // TODO: real error handling
+                console.log(error);
+                return Observable.of<Airport[]>([]);
+            });
+        this.arrivalAirports.subscribe();
+    }
 
     get dump() {
         return JSON.stringify(this.model);
