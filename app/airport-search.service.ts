@@ -44,8 +44,10 @@ export class AirportSearchService {
 
     searchAirports(iata: string): Promise<Airport[]> {
         console.log('Search for term ' + iata);
-        return this.getAirports()
-            .then(airports => airports.filter(airport => airport.name.search(new RegExp(iata, 'i')) != -1));
+        return this.http.get('https://api.iflya380.pixopat.io/airports/' + iata + '/search?apikey=a2b295e8ffc923e3d17254616974d23d')
+            .toPromise()
+            .then(response => response.json() as Airport[])
+            .catch(this.handleError);
     }
 
     private handleError(error: any): Promise<any> {

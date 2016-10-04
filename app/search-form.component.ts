@@ -65,6 +65,7 @@ export class SearchFormComponent implements OnInit {
         this.model.arrival = airport.iata;
     }
 
+    // TODO : http://www.metaltoad.com/blog/angular-2-http-observables
     ngOnInit(): void {
         this.departureAirports = this.departureAirportSearchTerms
             .debounceTime(300)        // wait for 300ms pause in events
@@ -79,7 +80,6 @@ export class SearchFormComponent implements OnInit {
                 console.log(error);
                 return Observable.of<Airport[]>([]);
             });
-        this.departureAirports.subscribe();
 
         this.arrivalAirports = this.arrivalAirportSearchTerms
             .debounceTime(300)        // wait for 300ms pause in events
@@ -94,7 +94,6 @@ export class SearchFormComponent implements OnInit {
                 console.log(error);
                 return Observable.of<Airport[]>([]);
             });
-        this.arrivalAirports.subscribe();
     }
 
     get dump() {
