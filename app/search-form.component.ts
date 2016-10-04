@@ -57,12 +57,14 @@ export class SearchFormComponent implements OnInit {
         console.log('Setting departure');
         console.log(airport);
         this.model.departure = airport.iata;
+        this.displayDepartureDiv = false;
     }
 
     selectArrival(airport: Airport) {
         console.log('Setting arrival');
         console.log(airport);
         this.model.arrival = airport.iata;
+        this.displayArrivalDiv = false;
     }
 
     // TODO : http://www.metaltoad.com/blog/angular-2-http-observables

@@ -7,7 +7,7 @@
         <div class="form-group">
             <label for="departure">Departure</label>
             <input #departure type="text" class="form-control" id="departure" required
-                   [(ngModel)]="model.departure" name="departure" (keyup)="departureSearch(departure.value)" (blur)="displayDepartureDiv = false">
+                   [(ngModel)]="model.departure" name="departure" (keyup)="departureSearch(departure.value)">
             <div *ngIf="displayDepartureDiv">
                 <div *ngFor="let airport of departureAirports | async"
                      class="search-result"
@@ -17,7 +17,7 @@
         <div class=" form-group">
             <label for="arrival">Arrival</label>
             <input #arrival type="text" class="form-control" id="arrival" required
-                   [(ngModel)]="model.arrival" name="arrival" (keyup)="arrivalSearch(arrival.value)" (blur)="displayArrivalDiv = false">
+                   [(ngModel)]="model.arrival" name="arrival" (keyup)="arrivalSearch(arrival.value)">
             <div *ngIf="displayArrivalDiv">
                 <div *ngFor="let airport of arrivalAirports | async"
                      class="search-result"
