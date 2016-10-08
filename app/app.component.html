@@ -1,0 +1,29 @@
+
+<header>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <a routerLink="/" routerLinkActive="active"
+                   [routerLinkActiveOptions]="{ exact: true }" class="navbar-brand">
+                    IFlyA380.com
+                </a>
+            </div>
+
+            <ul class="nav navbar-nav">
+                <li><a routerLink="/" routerLinkActive="active"
+                       [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
+                <li><a routerLink="/booking" routerLinkActive="active" >Booking</a></li>
+                <li><a routerLink="/airlines" routerLinkActive="active" >Airlines</a></li>
+                <li><a routerLink="/destinations" routerLinkActive="active" >Destinations</a></li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+
+<main>
+
+    <router-outlet></router-outlet>
+
+</main>

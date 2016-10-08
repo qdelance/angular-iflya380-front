@@ -24,6 +24,8 @@ export const AIRPORTS: Airport[] = [
 
 // https://api.iflya380.pixopat.io/airports?apikey=a2b295e8ffc923e3d17254616974d23d
 // https://api.iflya380.pixopat.io/airports/cdg/search?apikey=a2b295e8ffc923e3d17254616974d23d
+// check to store data locally https://coryrylan.com/blog/angular-2-observable-data-services
+// http://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html
 
 @Injectable()
 export class AirportSearchService {

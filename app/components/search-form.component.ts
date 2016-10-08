@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Airport, AirportSearchService } from "./airport-search.service";
+import { Airport, AirportSearchService } from "../shared/airport-search.service";
 
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
@@ -16,8 +16,8 @@ export class Search {
 
 @Component({
     selector: 'search-form',
-    templateUrl: 'app/search-form.component.html',
-    styleUrls: ['app/search-form.component.css'],
+    templateUrl: 'app/components/search-form.component.html',
+    styleUrls: ['app/components/search-form.component.css'],
     providers: [AirportSearchService]
 })
 export class SearchFormComponent implements OnInit {
