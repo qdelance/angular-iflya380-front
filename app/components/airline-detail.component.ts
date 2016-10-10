@@ -23,7 +23,7 @@ export class AirlineDetailComponent implements OnInit {
     constructor(private route: ActivatedRoute, private router: Router, private airlineService: AirlinesService) {}
 
     ngOnInit(): void {
-        let id = +this.route.snapshot.params['id'];
+        let id = +this.route.snapshot.params['id']; // Params are always strings, we force cast to number (otherwise "===" in service won't work)
         console.log('Getting airline with ID ' + id);
         this.airlineService.getAirline(id).then(airline => this.airline = airline);
     }
