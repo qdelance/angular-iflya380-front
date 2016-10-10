@@ -10,6 +10,7 @@ import { AppComponent }   from './app.component';
 import { HomeComponent }   from './components/home.component';
 import { SearchFormComponent }   from './components/search-form.component';
 import { AirlinesComponent }   from './components/airlines.component';
+import { AirlineDetailComponent }   from './components/airline-detail.component';
 import { DestinationsComponent }   from './components/destinations.component';
 import { NotFoundComponent }   from './components/not-found.component';
 
@@ -29,6 +30,7 @@ import { AirlinesService } from "./shared/airlines.service";
         HomeComponent,
         SearchFormComponent,
         AirlinesComponent,
+        AirlineDetailComponent,
         DestinationsComponent,
         NotFoundComponent
     ],
