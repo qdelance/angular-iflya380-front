@@ -16,6 +16,7 @@ import { NotFoundComponent }   from './components/not-found.component';
 
 import { AirportSearchService } from "./shared/airport-search.service";
 import { AirlinesService } from "./shared/airlines.service";
+import { DestinationsService } from "./shared/destinations.service";
 
 @NgModule({
     imports: [
@@ -37,6 +38,7 @@ import { AirlinesService } from "./shared/airlines.service";
     providers: [
         AirportSearchService,
         AirlinesService,
+        DestinationsService
     ],
     bootstrap: [AppComponent]
 })

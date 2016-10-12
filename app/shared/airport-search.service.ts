@@ -9,19 +9,6 @@ export class Airport {
     }
 }
 
-export const AIRPORTS: Airport[] = [
-    {iata: 'PAR', name: 'Paris All airports'},
-    {iata: 'CDG', name: 'Paris Charles de Gaulle'},
-    {iata: 'ORY', name: 'Paris Orly'},
-    {iata: 'TLS', name: 'Toulouse'},
-    {iata: 'JFK', name: 'New York'},
-    {iata: 'LON', name: 'Mondon ALl airports'},
-    {iata: 'NYC', name: 'New York All airports'},
-    {iata: 'PEK', name: 'Pekin'},
-    {iata: 'DOH', name: 'Doha'},
-    {iata: 'AUH', name: 'Abu Dhabi'}
-];
-
 // https://api.iflya380.pixopat.io/airports?apikey=a2b295e8ffc923e3d17254616974d23d
 // https://api.iflya380.pixopat.io/airports/cdg/search?apikey=a2b295e8ffc923e3d17254616974d23d
 // check to store data locally https://coryrylan.com/blog/angular-2-observable-data-services
