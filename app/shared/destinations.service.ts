@@ -817,11 +817,11 @@ export class DestinationsService {
 
         let destination: Destination = null;
         for (var key in keys) {
-            console.log(DESTINATIONS[key].city);
             destination = new Destination();
             destination.name = DESTINATIONS[key].city;
             destination.iata = DESTINATIONS[key].iata;
             destination.region = DESTINATIONS[key].region;
+            destination.destinationUrl = DESTINATIONS[key].destinationUrl;
             destination.imageSquare = 'http://www.iflya380.com' + DESTINATIONS[key].imageSquare;
             destination.image = 'http://www.iflya380.com' + DESTINATIONS[key].image;
             result.push(destination);
@@ -829,10 +829,10 @@ export class DestinationsService {
         return Promise.resolve(result);
     }
 
-    /*getAirportByIATA(iata: string): Promise<Destination> {
-        return this.getAirports()
-            .then(airports => airports.find(airport => airport.iata === iata));
-    }*/
+    getDestination(name: string): Promise<Destination> {
+        return this.getDestinations()
+            .then(destinations => destinations.find(destination => destination.name === name));
+    }
 
     private handleError(error: any): Promise<any> {
         console.error('An error occurred');

@@ -8,6 +8,7 @@ import { AirlinesComponent } from './components/airlines.component';
 import { AirlineDetailComponent } from './components/airline-detail.component';
 import { DestinationsComponent } from './components/destinations.component';
 import { NotFoundComponent } from './components/not-found.component';
+import { DestinationDetailComponent } from "./components/destination-detail.component";
 
 const appRoutes: Routes = [
     {
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
     { path: 'airlines', component: AirlinesComponent },
     { path: 'airline/:id', component: AirlineDetailComponent },
     { path: 'destinations', component: DestinationsComponent },
+    { path: 'destination/:name', component: DestinationDetailComponent },
     { path: '**', component: NotFoundComponent }
 ];
 

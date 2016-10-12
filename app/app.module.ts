@@ -17,6 +17,7 @@ import { NotFoundComponent }   from './components/not-found.component';
 import { AirportSearchService } from "./shared/airport-search.service";
 import { AirlinesService } from "./shared/airlines.service";
 import { DestinationsService } from "./shared/destinations.service";
+import { DestinationDetailComponent } from "./components/destination-detail.component";
 
 @NgModule({
     imports: [
@@ -33,6 +34,7 @@ import { DestinationsService } from "./shared/destinations.service";
         AirlinesComponent,
         AirlineDetailComponent,
         DestinationsComponent,
+        DestinationDetailComponent,
         NotFoundComponent
     ],
     providers: [
