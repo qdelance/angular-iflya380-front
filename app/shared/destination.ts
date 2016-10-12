@@ -5,5 +5,6 @@ export class Destination {
     destinationUrl: string;
     image: string;
     imageSquare: string;
+    airlines: string[];
 
 }

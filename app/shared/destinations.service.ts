@@ -4,6 +4,8 @@ import { Http } from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 import { Destination } from "./destination";
 
+// Should be replaced by real data on https://www.iflya380.com/a380-destinations.destinations.json
+// But we cannot used it due to CORS
 const DESTINATIONS = {
     "0": {
         "name": "All Airports",
@@ -818,14 +820,21 @@ export class DestinationsService {
         let destination: Destination = null;
         for (var key in keys) {
             destination = new Destination();
+            destination.airlines = [];
             destination.name = DESTINATIONS[key].city;
             destination.iata = DESTINATIONS[key].iata;
             destination.region = DESTINATIONS[key].region;
             destination.destinationUrl = DESTINATIONS[key].destinationUrl;
             destination.imageSquare = 'http://www.iflya380.com' + DESTINATIONS[key].imageSquare;
             destination.image = 'http://www.iflya380.com' + DESTINATIONS[key].image;
+
+            let keys2 = Object.keys(DESTINATIONS[key].companies);
+            for (var key2 in keys2) {
+                destination.airlines.push(DESTINATIONS[key].companies[key2]);
+            }
+
             result.push(destination);
-        };
+        }
         return Promise.resolve(result);
     }
 
